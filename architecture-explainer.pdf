@@ -1,0 +1,220 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 2 /Kids [ 5 0 R 7 0 R ] >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Length 2364 >>
+stream
+BT
+/F1 11 Tf
+72 740 Td
+14 TL
+(Codebase Architect Explainer) Tj
+T*
+() Tj
+T*
+(1\) Big Picture) Tj
+T*
+(This project is a Node.js Express backend API focused on authentication and user management.) Tj
+T*
+(It provides health endpoints, request validation, user signup persistence in PostgreSQL,) Tj
+T*
+(and JWT cookie issuance.) Tj
+T*
+() Tj
+T*
+(2\) Core Architecture) Tj
+T*
+(The codebase follows a layered monolith architecture:) Tj
+T*
+(- Entry/bootstrap: src/index.js -> src/server.js -> src/app.js) Tj
+T*
+(- HTTP transport: src/routes) Tj
+T*
+(- Controller layer: src/controllers) Tj
+T*
+(- Service/business layer: src/services) Tj
+T*
+(- Persistence/schema: src/models + src/config/database.js + drizzle migrations) Tj
+T*
+(- Shared utilities and validation: src/utils + src/validations + src/config/logger.js) Tj
+T*
+() Tj
+T*
+(High-level flow:) Tj
+T*
+(Client Request) Tj
+T*
+(  -> Express middleware stack in app.js) Tj
+T*
+(  -> /api/auth routes) Tj
+T*
+(  -> controller validation and orchestration) Tj
+T*
+(  -> service DB operations via Drizzle) Tj
+T*
+(  -> response + cookie + logs) Tj
+T*
+() Tj
+T*
+(3\) Key Components) Tj
+T*
+(- src/app.js: middleware, logging, health routes, API route mounting) Tj
+T*
+(- src/routes/auth.routes.js: route definitions) Tj
+T*
+(- src/controllers/auth.controller.js: signup request handling) Tj
+T*
+(- src/services/auth.service.js: user lookup/create and password hashing) Tj
+T*
+(- src/models/user.model.js: users table schema) Tj
+T*
+(- src/validations/auth.validation.js: Zod input schemas) Tj
+T*
+(- src/utils/jwt.js and src/utils/cookies.js: token and cookie helpers) Tj
+T*
+(- src/config/logger.js: Winston logging setup) Tj
+T*
+(- src/config/database.js: Neon + Drizzle database connection) Tj
+T*
+() Tj
+T*
+(4\) Data Flow and Communication) Tj
+T*
+(1. Request enters Express middleware.) Tj
+T*
+(2. Route dispatches to auth controller.) Tj
+T*
+(3. Controller validates payload with Zod.) Tj
+T*
+(4. Controller calls service.) Tj
+T*
+(5. Service queries/inserts using Drizzle against Postgres \(Neon\).) Tj
+T*
+(6. Controller signs JWT, sets HTTP-only cookie, and returns JSON.) Tj
+T*
+(7. Morgan and Winston capture logs.) Tj
+T*
+() Tj
+T*
+(5\) Tech Stack and Dependencies) Tj
+T*
+(- express: HTTP server and routing) Tj
+T*
+(- drizzle-orm + drizzle-kit: data access and migrations) Tj
+T*
+(- @neondatabase/serverless: PostgreSQL connectivity) Tj
+T*
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 4 0 R >>
+endobj
+6 0 obj
+<< /Length 1815 >>
+stream
+BT
+/F1 11 Tf
+72 740 Td
+14 TL
+(- zod: request validation) Tj
+T*
+(- bcrypt: password hashing) Tj
+T*
+(- jsonwebtoken: token generation and verification) Tj
+T*
+(- helmet, cors, cookie-parser: API security and cookie parsing) Tj
+T*
+(- morgan + winston: request and structured logging) Tj
+T*
+() Tj
+T*
+(6\) Typical Execution Flow \(Signup\)) Tj
+T*
+(User sends POST /api/auth/sign-up with name/email/password.) Tj
+T*
+(-> signup schema validates the body.) Tj
+T*
+(-> createUser checks for existing email.) Tj
+T*
+(-> password is hashed with bcrypt.) Tj
+T*
+(-> user row is inserted into users table.) Tj
+T*
+(-> JWT token is generated.) Tj
+T*
+(-> token is set in an HTTP-only cookie.) Tj
+T*
+(-> API responds with 201 and user payload.) Tj
+T*
+() Tj
+T*
+(7\) Strengths and Tradeoffs) Tj
+T*
+(Strengths:) Tj
+T*
+(- Clear layered boundaries \(route/controller/service/model/validation\).) Tj
+T*
+(- Security baseline present \(hashing, JWT, HTTP-only cookies, helmet\).) Tj
+T*
+(- Migration-backed relational schema with structured logging.) Tj
+T*
+() Tj
+T*
+(Tradeoffs / watchouts:) Tj
+T*
+(- sign-in and sign-out are still placeholders.) Tj
+T*
+(- Error handling is not centralized via a global error middleware.) Tj
+T*
+(- A few naming and consistency issues can cause runtime bugs.) Tj
+T*
+(- Email uniqueness is enforced in code but not yet at DB constraint level.) Tj
+T*
+() Tj
+T*
+(8\) Final Summary) Tj
+T*
+(This is a layered Express monolith that implements the foundation of an auth API.) Tj
+T*
+(Requests flow from routes to controllers to services to Drizzle/Postgres, with Zod) Tj
+T*
+(validation,) Tj
+T*
+(JWT cookies, and Winston logging across the stack. It is a solid starter architecture with) Tj
+T*
+(clear) Tj
+T*
+(separation of concerns, but auth completeness and production hardening still need follow-up) Tj
+T*
+(work.) Tj
+T*
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 6 0 R >>
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000129 00000 n 
+0000000199 00000 n 
+0000002615 00000 n 
+0000002741 00000 n 
+0000004608 00000 n 
+trailer
+<< /Size 8 /Root 1 0 R >>
+startxref
+4734
+%%EOF
