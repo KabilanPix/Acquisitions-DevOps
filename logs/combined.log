@@ -44,3 +44,23 @@
 {"level":"info","message":"::1 - - [03/Jun/2026:14:11:26 +0000] \"GET /health HTTP/1.1\" 403 89 \"-\" \"HTTPie\"","service":"acquisitions-devops","timestamp":"2026-06-03T14:11:26.335Z"}
 {"ip":"::1","level":"warn","message":"Rate limit exceeded","path":"/health","service":"acquisitions-devops","timestamp":"2026-06-03T14:11:26.710Z","userAgent":"HTTPie"}
 {"level":"info","message":"::1 - - [03/Jun/2026:14:11:26 +0000] \"GET /health HTTP/1.1\" 403 89 \"-\" \"HTTPie\"","service":"acquisitions-devops","timestamp":"2026-06-03T14:11:26.711Z"}
+{"level":"info","message":"Hello from acquisitions!","service":"acquisitions-devops","timestamp":"2026-06-04T06:18:27.472Z"}
+{"level":"info","message":"::ffff:172.18.0.1 - - [04/Jun/2026:06:18:27 +0000] \"GET / HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.122.1 Chrome/142.0.7444.265 Electron/39.8.8 Safari/537.36\"","service":"acquisitions-devops","timestamp":"2026-06-04T06:18:27.477Z"}
+{"level":"info","message":"::ffff:172.18.0.1 - - [04/Jun/2026:06:19:14 +0000] \"GET /api/sign-up HTTP/1.1\" 404 150 \"-\" \"HTTPie\"","service":"acquisitions-devops","timestamp":"2026-06-04T06:19:14.186Z"}
+{"level":"info","message":"::ffff:172.18.0.1 - - [04/Jun/2026:06:19:20 +0000] \"GET /api/auth/sign-up HTTP/1.1\" 404 155 \"-\" \"HTTPie\"","service":"acquisitions-devops","timestamp":"2026-06-04T06:19:20.986Z"}
+{"level":"error","message":" Error creating the user : Error: User already exists","service":"acquisitions-devops","timestamp":"2026-06-04T06:19:33.326Z"}
+{"level":"error","message":"Signup error User already exists","service":"acquisitions-devops","stack":"Error: User already exists\n    at createUser (file:///app/src/services/auth.service.js:68:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async signup (file:///app/src/controllers/auth.controller.js:20:18)","timestamp":"2026-06-04T06:19:33.327Z"}
+{"level":"info","message":"::ffff:172.18.0.1 - - [04/Jun/2026:06:19:33 +0000] \"POST /api/auth/sign-up HTTP/1.1\" 409 31 \"-\" \"HTTPie\"","service":"acquisitions-devops","timestamp":"2026-06-04T06:19:33.330Z"}
+{"level":"info","message":"User signed in successfully: jhon@gmail.com","service":"acquisitions-devops","timestamp":"2026-06-04T06:19:43.710Z"}
+{"level":"info","message":"::ffff:172.18.0.1 - - [04/Jun/2026:06:19:43 +0000] \"POST /api/auth/sign-in HTTP/1.1\" 200 98 \"-\" \"HTTPie\"","service":"acquisitions-devops","timestamp":"2026-06-04T06:19:43.711Z"}
+{"level":"info","message":"User signed in successfully: jhon@gmail.com","service":"acquisitions-devops","timestamp":"2026-06-04T06:19:49.101Z"}
+{"level":"info","message":"::ffff:172.18.0.1 - - [04/Jun/2026:06:19:49 +0000] \"POST /api/auth/sign-in HTTP/1.1\" 200 98 \"-\" \"HTTPie\"","service":"acquisitions-devops","timestamp":"2026-06-04T06:19:49.103Z"}
+{"ip":"::ffff:172.18.0.1","level":"warn","message":"Rate limit exceeded","path":"/api/auth/sign-in","service":"acquisitions-devops","timestamp":"2026-06-04T06:19:49.705Z","userAgent":"HTTPie"}
+{"level":"info","message":"::ffff:172.18.0.1 - - [04/Jun/2026:06:19:49 +0000] \"POST /api/auth/sign-in HTTP/1.1\" 403 89 \"-\" \"HTTPie\"","service":"acquisitions-devops","timestamp":"2026-06-04T06:19:49.706Z"}
+{"ip":"::ffff:172.18.0.1","level":"warn","message":"Rate limit exceeded","path":"/api/auth/sign-in","service":"acquisitions-devops","timestamp":"2026-06-04T06:19:50.124Z","userAgent":"HTTPie"}
+{"level":"info","message":"::ffff:172.18.0.1 - - [04/Jun/2026:06:19:50 +0000] \"POST /api/auth/sign-in HTTP/1.1\" 403 89 \"-\" \"HTTPie\"","service":"acquisitions-devops","timestamp":"2026-06-04T06:19:50.126Z"}
+{"ip":"::ffff:172.18.0.1","level":"warn","message":"Rate limit exceeded","path":"/api/auth/sign-in","service":"acquisitions-devops","timestamp":"2026-06-04T06:19:50.836Z","userAgent":"HTTPie"}
+{"level":"info","message":"::ffff:172.18.0.1 - - [04/Jun/2026:06:19:50 +0000] \"POST /api/auth/sign-in HTTP/1.1\" 403 89 \"-\" \"HTTPie\"","service":"acquisitions-devops","timestamp":"2026-06-04T06:19:50.838Z"}
+{"level":"info","message":"User adrian@gmail.com created successfullly","service":"acquisitions-devops","timestamp":"2026-06-04T06:21:49.001Z"}
+{"level":"info","message":"User registered successfully: adrian@gmail.com","service":"acquisitions-devops","timestamp":"2026-06-04T06:21:49.005Z"}
+{"level":"info","message":"::ffff:172.18.0.1 - - [04/Jun/2026:06:21:49 +0000] \"POST /api/auth/sign-up HTTP/1.1\" 201 102 \"-\" \"HTTPie\"","service":"acquisitions-devops","timestamp":"2026-06-04T06:21:49.006Z"}
