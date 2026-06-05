@@ -11,7 +11,7 @@ export const authenticateToken = (req, res, next) => {
     req.user = decoded;
     next();
   } catch (e) {
-    logger.warn('Invalid or expired token provided');
+    logger.warn('Invalid or expired token provided',e);
     return res.status(403).json({ message: 'Forbidden: Invalid or expired token' });
   }
 };

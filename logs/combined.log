@@ -236,3 +236,29 @@
 {"level":"info","message":"::ffff:172.18.0.1 - - [05/Jun/2026:04:58:48 +0000] \"DELETE /api/users/3 HTTP/1.1\" 200 39 \"-\" \"HTTPie\"","service":"acquisitions-devops","timestamp":"2026-06-05T04:58:48.850Z"}
 {"level":"info","message":"getting users ... ","service":"acquisitions-devops","timestamp":"2026-06-05T04:58:57.548Z"}
 {"level":"info","message":"::ffff:172.18.0.1 - - [05/Jun/2026:04:58:58 +0000] \"GET /api/users HTTP/1.1\" 200 274 \"-\" \"HTTPie\"","service":"acquisitions-devops","timestamp":"2026-06-05T04:58:58.072Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [05/Jun/2026:05:44:40 +0000] \"GET /health HTTP/1.1\" 200 73 \"-\" \"-\"","service":"acquisitions-devops","timestamp":"2026-06-05T05:44:40.383Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [05/Jun/2026:05:44:40 +0000] \"GET /api HTTP/1.1\" 200 42 \"-\" \"-\"","service":"acquisitions-devops","timestamp":"2026-06-05T05:44:40.730Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [05/Jun/2026:05:44:41 +0000] \"GET /nonexistent HTTP/1.1\" 404 27 \"-\" \"-\"","service":"acquisitions-devops","timestamp":"2026-06-05T05:44:41.047Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [05/Jun/2026:06:19:06 +0000] \"GET /health HTTP/1.1\" 200 73 \"-\" \"-\"","service":"acquisitions-devops","timestamp":"2026-06-05T06:19:06.750Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [05/Jun/2026:06:19:06 +0000] \"GET /api HTTP/1.1\" 200 42 \"-\" \"-\"","service":"acquisitions-devops","timestamp":"2026-06-05T06:19:06.898Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [05/Jun/2026:06:19:07 +0000] \"GET /nonexistent HTTP/1.1\" 404 27 \"-\" \"-\"","service":"acquisitions-devops","timestamp":"2026-06-05T06:19:07.122Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [05/Jun/2026:06:19:47 +0000] \"GET /health HTTP/1.1\" 200 73 \"-\" \"-\"","service":"acquisitions-devops","timestamp":"2026-06-05T06:19:47.378Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [05/Jun/2026:06:19:47 +0000] \"GET /api HTTP/1.1\" 200 42 \"-\" \"-\"","service":"acquisitions-devops","timestamp":"2026-06-05T06:19:47.531Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [05/Jun/2026:06:19:47 +0000] \"GET /nonexistent HTTP/1.1\" 404 27 \"-\" \"-\"","service":"acquisitions-devops","timestamp":"2026-06-05T06:19:47.688Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [05/Jun/2026:06:22:46 +0000] \"GET /health HTTP/1.1\" 200 73 \"-\" \"supertest\"","service":"acquisitions-devops","timestamp":"2026-06-05T06:22:46.693Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [05/Jun/2026:06:22:46 +0000] \"GET /api HTTP/1.1\" 200 42 \"-\" \"supertest\"","service":"acquisitions-devops","timestamp":"2026-06-05T06:22:46.906Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [05/Jun/2026:06:22:47 +0000] \"GET /nonexistent HTTP/1.1\" 404 27 \"-\" \"supertest\"","service":"acquisitions-devops","timestamp":"2026-06-05T06:22:47.260Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [05/Jun/2026:06:23:01 +0000] \"GET /health HTTP/1.1\" 200 73 \"-\" \"supertest\"","service":"acquisitions-devops","timestamp":"2026-06-05T06:23:01.613Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [05/Jun/2026:06:23:01 +0000] \"GET /api HTTP/1.1\" 200 42 \"-\" \"supertest\"","service":"acquisitions-devops","timestamp":"2026-06-05T06:23:01.811Z"}
+{"ip":"::ffff:127.0.0.1","level":"warn","message":"Rate limit exceeded","path":"/nonexistent","service":"acquisitions-devops","timestamp":"2026-06-05T06:23:01.935Z","userAgent":"supertest"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [05/Jun/2026:06:23:01 +0000] \"GET /nonexistent HTTP/1.1\" 403 89 \"-\" \"supertest\"","service":"acquisitions-devops","timestamp":"2026-06-05T06:23:01.936Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [05/Jun/2026:06:23:35 +0000] \"GET /health HTTP/1.1\" 200 73 \"-\" \"supertest\"","service":"acquisitions-devops","timestamp":"2026-06-05T06:23:35.333Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [05/Jun/2026:06:23:35 +0000] \"GET /api HTTP/1.1\" 200 42 \"-\" \"supertest\"","service":"acquisitions-devops","timestamp":"2026-06-05T06:23:35.532Z"}
+{"ip":"::ffff:127.0.0.1","level":"warn","message":"Rate limit exceeded","path":"/nonexistent","service":"acquisitions-devops","timestamp":"2026-06-05T06:23:35.735Z","userAgent":"supertest"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [05/Jun/2026:06:23:35 +0000] \"GET /nonexistent HTTP/1.1\" 403 89 \"-\" \"supertest\"","service":"acquisitions-devops","timestamp":"2026-06-05T06:23:35.736Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [05/Jun/2026:06:24:19 +0000] \"GET /health HTTP/1.1\" 200 73 \"-\" \"supertest\"","service":"acquisitions-devops","timestamp":"2026-06-05T06:24:19.393Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [05/Jun/2026:06:24:19 +0000] \"GET /api HTTP/1.1\" 200 42 \"-\" \"supertest\"","service":"acquisitions-devops","timestamp":"2026-06-05T06:24:19.404Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [05/Jun/2026:06:24:19 +0000] \"GET /nonexistent HTTP/1.1\" 404 27 \"-\" \"supertest\"","service":"acquisitions-devops","timestamp":"2026-06-05T06:24:19.409Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [05/Jun/2026:06:24:39 +0000] \"GET /health HTTP/1.1\" 200 73 \"-\" \"supertest\"","service":"acquisitions-devops","timestamp":"2026-06-05T06:24:39.161Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [05/Jun/2026:06:24:39 +0000] \"GET /api HTTP/1.1\" 200 42 \"-\" \"supertest\"","service":"acquisitions-devops","timestamp":"2026-06-05T06:24:39.174Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [05/Jun/2026:06:24:39 +0000] \"GET /nonexistent HTTP/1.1\" 404 27 \"-\" \"supertest\"","service":"acquisitions-devops","timestamp":"2026-06-05T06:24:39.179Z"}
