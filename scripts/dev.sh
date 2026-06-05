@@ -3,6 +3,16 @@
 # Development startup script for Acquisition App with Neon Local
 # This script starts the application in development mode with Neon Local
 
+# Cleanup function to stop containers on exit
+cleanup() {
+    echo ""
+    echo "⏹️  Stopping containers..."
+    docker compose -f docker-compose.dev.yml down
+    exit 0
+}
+
+trap cleanup SIGINT SIGTERM
+
 echo "🚀 Starting Acquisition App in Development Mode"
 echo "================================================"
 
@@ -34,20 +44,24 @@ echo "   - Neon Local proxy will create an ephemeral database branch"
 echo "   - Application will run with hot reload enabled"
 echo ""
 
-# Run migrations with Drizzle
-echo "📜 Applying latest schema with Drizzle..."
-npm run db:migrate
+# Start development environment
+echo "🚀 Starting containers in background..."
+docker compose -f docker-compose.dev.yml up --build -d
 
 # Wait for the database to be ready
-echo "⏳ Waiting for the database to be ready..."
-docker compose exec neon-local psql -U neon -d neondb -c 'SELECT 1'
+echo "⏳ Waiting for Neon Local to be ready..."
+until docker compose -f docker-compose.dev.yml exec neon-local psql postgres://neon:npg@127.0.0.1:5432/neondb -c '\q' 2>/dev/null; do
+  sleep 2
+done
 
-# Start development environment
-docker compose -f docker-compose.dev.yml up --build
+# Run migrations with Drizzle inside the app container
+echo "📜 Applying latest schema with Drizzle..."
+docker compose -f docker-compose.dev.yml exec app npm run db:migrate
 
 echo ""
 echo "🎉 Development environment started!"
-echo "   Application: http://localhost:5173"
+echo "   Application: http://localhost:3000"
 echo "   Database: postgres://neon:npg@localhost:5432/neondb"
 echo ""
-echo "To stop the environment, press Ctrl+C or run: docker compose down"
+echo "Attaching to app logs... (Press Ctrl+C to stop viewing logs)"
+docker compose -f docker-compose.dev.yml logs -f app

@@ -28,19 +28,18 @@ echo ""
 # Start production environment
 docker compose -f docker-compose.prod.yml up --build -d
 
-# Wait for DB to be ready (basic health check)
-echo "⏳ Waiting for Neon Local to be ready..."
+# Wait for app container to be ready
+echo "⏳ Waiting for app container to start..."
 sleep 5
 
-# Run migrations with Drizzle
+# Run migrations with Drizzle inside the app container
 echo "📜 Applying latest schema with Drizzle..."
-npm run db:migrate
+docker compose -f docker-compose.prod.yml exec app npm run db:migrate
 
 echo ""
 echo "🎉 Production environment started!"
 echo "   Application: http://localhost:3000"
-echo "   Logs: docker logs acquisition-app-prod"
 echo ""
 echo "Useful commands:"
-echo "   View logs: docker logs -f acquisition-app-prod"
+echo "   View logs: docker compose -f docker-compose.prod.yml logs -f app"
 echo "   Stop app: docker compose -f docker-compose.prod.yml down"

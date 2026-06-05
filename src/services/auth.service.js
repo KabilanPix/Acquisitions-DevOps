@@ -29,8 +29,7 @@ export const authenticateUser = async (email, password) => {
     const [user] = await db
       .select()
       .from(users)
-      .where(eq(users.email, email))
-      .limit(1);
+      .where(eq(users.email, email));
 
     if (!user) {
       throw new Error('User not found');
@@ -62,8 +61,7 @@ export const createUser = async({ name, email ,password, role = 'user'
     const existingUser = await db
       .select()
       .from(users)
-      .where(eq(users.email, email))
-      .limit(1);    
+      .where(eq(users.email, email));    
     if (existingUser.length > 0) {
       throw new Error('User already exists');
     }

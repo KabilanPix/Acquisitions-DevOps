@@ -5,3 +5,4 @@ drizzle/
 *. log
 package-lock. json|
 .env.*
+INDEX.md
