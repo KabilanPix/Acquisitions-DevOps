@@ -1,58 +1,71 @@
 import logger from '#config/logger.js';
-import {signupSchema, signinSchema} from '#validations/auth.validation.js';
-import {formatValidationError} from '#utils/fromat.js';
+import { signupSchema, signinSchema } from '#validations/auth.validation.js';
+import { formatValidationError } from '#utils/fromat.js';
 import { createUser, authenticateUser } from '#services/auth.service.js';
-import {jwttoken} from '#utils/jwt.js';
-import {cookies} from '#utils/cookies.js';
+import { jwttoken } from '#utils/jwt.js';
+import { cookies } from '#utils/cookies.js';
 
-export const signup = async ( req, res, next) => {
-  try{
+export const signup = async (req, res, next) => {
+  try {
     const validationResult = signupSchema.safeParse(req.body);
 
-    if(!validationResult.success) {
+    if (!validationResult.success) {
       return res.status(400).json({
         error: 'validation failed',
-        details: formatValidationError(validationResult.error)
+        details: formatValidationError(validationResult.error),
       });
     }
-    const{ name, email, password, role } = validationResult.data;
+    const { name, email, password, role } = validationResult.data;
 
-    const user = await createUser({name, email,password,role});
-    const token = jwttoken.sign ({ id :user.id, name: user.name, role : user.role });
-    
+    const user = await createUser({ name, email, password, role });
+    const token = jwttoken.sign({
+      id: user.id,
+      name: user.name,
+      role: user.role,
+    });
+
     cookies.set(res, 'token', token);
 
     logger.info(`User registered successfully: ${email}`);
     res.status(201).json({
       message: 'User registered',
       user: {
-        id: user.id, name: user.name, email: user.email, role: user.role
-      }
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+      },
     });
-  }
-  catch(e){
+  } catch (e) {
     logger.error('Signup error', e);
 
-    if(e.message === 'User with this email already exist' || e.message === 'User already exists') {
-      return res.status(409).json({ error:'Email already exist' });
+    if (
+      e.message === 'User with this email already exist' ||
+      e.message === 'User already exists'
+    ) {
+      return res.status(409).json({ error: 'Email already exist' });
     }
     next(e);
   }
 };
 export const signIn = async (req, res, next) => {
-  try{
+  try {
     const validationResult = signinSchema.safeParse(req.body);
 
-    if(!validationResult.success) {
+    if (!validationResult.success) {
       return res.status(400).json({
         error: 'validation failed',
-        details: formatValidationError(validationResult.error)
+        details: formatValidationError(validationResult.error),
       });
     }
 
     const { email, password } = validationResult.data;
     const user = await authenticateUser(email, password);
-    const token = jwttoken.sign ({ id :user.id, name: user.name, role : user.role });
+    const token = jwttoken.sign({
+      id: user.id,
+      name: user.name,
+      role: user.role,
+    });
 
     cookies.set(res, 'token', token);
 
@@ -60,18 +73,20 @@ export const signIn = async (req, res, next) => {
     res.status(200).json({
       message: 'User signed in',
       user: {
-        id: user.id, name: user.name, email: user.email, role: user.role
-      }
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+      },
     });
-  }
-  catch(e){
+  } catch (e) {
     logger.error('Signin error', e);
 
-    if(e.message === 'User not found') {
+    if (e.message === 'User not found') {
       return res.status(404).json({ error: 'User not found' });
     }
 
-    if(e.message === 'Invalid credentials') {
+    if (e.message === 'Invalid credentials') {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
 
@@ -80,13 +95,12 @@ export const signIn = async (req, res, next) => {
 };
 
 export const signOut = async (req, res, next) => {
-  try{
+  try {
     cookies.clear(res, 'token');
 
     logger.info('User signed out successfully');
     res.status(200).json({ message: 'User signed out' });
-  }
-  catch(e){
+  } catch (e) {
     logger.error('Signout error', e);
     next(e);
   }
